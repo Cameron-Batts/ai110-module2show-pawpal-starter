@@ -58,6 +58,7 @@ PawPal+ has four classes in pawpal_system.py. Task and Pet are dataclasses. A Ta
 
 ## 🖥️ Sample Output
 
+```
 Today's Schedule (sorted by time)
 --------------------------------------------
 [ ] 08:00  Morning walk (Mochi, 30 min) [high] 2026-10-14
@@ -69,7 +70,6 @@ Today's Schedule (sorted by time)
 Conflict check
 --------------------------------------------
 Warning: 2 tasks at 08:00 on 2026-10-14: Morning walk (Mochi), Grooming (Luna)
-
 ```
 
 ## 🧪 Testing PawPal+
