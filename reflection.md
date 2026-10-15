@@ -25,8 +25,7 @@ My design changed after I reviewed the skeleton with AI. A Task did not know whi
 
 **b. Tradeoffs**
 
-- Describe one tradeoff your scheduler makes.
-- Why is that tradeoff reasonable for this scenario?
+One tradeoff is that conflict detection only flags tasks that have the exact same date and time. It does not check if the durations overlap. For example, a 30 minute walk at 08:00 and a feeding at 08:15 would not get a warning even though they overlap. I kept it this way because it is simple and easy to test, and for a pet owner an exact match is the most obvious problem. If I had more time I would compare start time plus duration to catch real overlaps.
 
 ---
 
@@ -41,6 +40,7 @@ I used Claude in a chat to work through the project one step at a time. I asked 
 **b. Judgment and verification**
 
 I checked the AI's work by running it instead of trusting it. When I committed pawpal_system.py, my import check failed with an ImportError and the commit showed 0 insertions, which told me the file had been saved empty. I fixed it and committed again. I also ran main.py and pytest after each change to make sure the output matched what I expected, like the 2 passing tests. So far I have accepted the AI's suggestions, including adding pet_name to Task after its design review.
+I also looked at a shorter version of detect_conflicts that used defaultdict and a list comprehension. It saved a couple of lines but the warning message was harder to read, so I kept my original version.
 
 ---
 
