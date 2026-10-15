@@ -42,6 +42,10 @@ pip install -r requirements.txt
 6. Connect your logic to the Streamlit UI in `app.py`.
 7. Refine UML so it matches what you actually built.
 
+## Implementation Summary
+
+PawPal+ has four classes in pawpal_system.py. Task and Pet are dataclasses. A Task stores one activity (description, time, frequency, due date, duration, priority, and whether it is done). A Pet stores its name, species, and a list of tasks, and add_task() also saves the pet's name on the task. An Owner stores a list of pets, and get_all_tasks() collects every pet's tasks into one list. The Scheduler takes an Owner and reads from get_all_tasks(), so it works across all pets. Right now it can return the tasks due today. Sorting, filtering, and conflict checks are planned for Phase 4. main.py is a demo script that builds an owner with two pets and prints today's schedule, and tests/test_pawpal.py has the first two pytest tests.
+
 ## 🖥️ Sample Output
 
 Paste a sample of your app's CLI or Streamlit output here so a reader can see what a generated plan looks like:
