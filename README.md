@@ -22,6 +22,16 @@ Your final app should:
 - Display the plan clearly (and ideally explain the reasoning)
 - Include tests for the most important scheduling behaviors
 
+## Features
+
+- Add multiple pets, each with their own tasks
+- Schedule tasks with a time, duration, priority, and repeat setting (once, daily, or weekly)
+- Sorts tasks by date and time so the schedule is always in order
+- Filters tasks by pet name or by done and not done
+- Recurring tasks: completing a daily or weekly task automatically creates the next one
+- Conflict warnings when two tasks are scheduled at the same time
+- Streamlit app that keeps your pets and tasks while you use it
+
 ## Getting started
 
 ### Setup
@@ -48,15 +58,18 @@ PawPal+ has four classes in pawpal_system.py. Task and Pet are dataclasses. A Ta
 
 ## 🖥️ Sample Output
 
-Paste a sample of your app's CLI or Streamlit output here so a reader can see what a generated plan looks like:
-
-```
-Today's Schedule for Jordan
+Today's Schedule (sorted by time)
 --------------------------------------------
-[ ] 08:00  Morning walk (Mochi, 30 min) [high]
-[ ] 12:30  Medication (Mochi, 5 min) [high]
-[ ] 09:00  Feeding (Luna, 10 min) [high]
-[ ] 18:00  Play time (Luna, 20 min) [low]
+[ ] 08:00  Morning walk (Mochi, 30 min) [high] 2026-10-14
+[ ] 08:00  Grooming (Luna, 15 min) [low] 2026-10-14
+[ ] 09:00  Feeding (Luna, 10 min) [high] 2026-10-14
+[ ] 12:30  Medication (Mochi, 5 min) [high] 2026-10-14
+[ ] 18:00  Evening walk (Mochi, 30 min) [medium] 2026-10-14
+
+Conflict check
+--------------------------------------------
+Warning: 2 tasks at 08:00 on 2026-10-14: Morning walk (Mochi), Grooming (Luna)
+
 ```
 
 ## 🧪 Testing PawPal+
@@ -97,12 +110,10 @@ Conflict detection only checks for the exact same date and time. It does not che
 
 ## 📸 Demo Walkthrough
 
-Describe your app in numbered steps so a reader can follow along without watching a video:
-
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+1. Run `streamlit run app.py` and open the link it prints.
+2. Type a pet name (like Mochi), pick a species, and click **Add pet**.
+3. Under **Schedule a task**, pick the pet, type a description, choose a time, duration, priority, and how often it repeats, then click **Add task**. Add a few tasks, including two at the same time.
+4. The **All tasks** table shows everything sorted by date and time.
+5. Click **Generate schedule** to see today's tasks in order. If two tasks share the same time, a yellow warning shows which ones.
 
 **Screenshot or video** *(optional)*: <!-- Insert a screenshot or link to a demo video here -->
