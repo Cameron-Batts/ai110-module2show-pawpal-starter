@@ -38,7 +38,8 @@ I used Claude in a chat to work through the project one step at a time. I asked 
 
 **b. Judgment and verification**
 
-I checked the AI's work by running it instead of trusting it. When I committed pawpal_system.py, my import check failed with an ImportError and the commit showed 0 insertions, which told me the file had been saved empty. I fixed it and committed again. I also ran main.py and pytest after each change to make sure the output matched what I expected, like the 2 passing tests. So far I have accepted the AI's suggestions, including adding pet_name to Task after its design review.
+I checked the AI's work by running it instead of trusting it. When I committed pawpal_system.py, my import check failed with an ImportError and the commit showed 0 insertions, which told me the file had been saved empty. I fixed it and committed again. I also ran main.py and pytest after each change to make sure the output matched what I expected, like the 2 passing tests. I accepted most of the AI's suggestions, including adding pet_name to Task after its design review.
+
 I also looked at a shorter version of detect_conflicts that used defaultdict and a list comprehension. It saved a couple of lines but the warning message was harder to read, so I kept my original version.
 
 ---
