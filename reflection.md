@@ -4,13 +4,12 @@
 
 **a. Initial design**
 
-The three main things a user should be able to do are add a pet, schedule a task for that pet (like a walk, a feeding, medication, or a vet visit), and see today's tasks in order. I picked these because they cover the basic loop of the app: set up the pet, plan the care, then check what to do next.
+I used four classes. Task holds one activity: what it is, the time, how often it repeats, the due date, how long it takes, the priority, and whether it is done. Pet holds the pet's name and species and its list of tasks. Owner holds the owner's name and a list of pets, and it has one method that returns every pet's tasks together. Scheduler takes an owner and does the thinking: sorting by time, filtering, finding conflicts, and building today's schedule. I kept the Scheduler separate so the other three classes only store data.
+---
 
 **b. Design changes**
 
-- Did your design change during implementation?
-- If yes, describe at least one change and why you made it.
-
+My design changed after I reviewed the skeleton with AI. A Task did not know which pet it belonged to, so once get_all_tasks() put every pet's tasks in one list, the Scheduler could not filter by pet name or show which pet a task was for. I added a pet_name field to Task that gets filled in when a task is added to a pet. I also decided conflict checks should compare the due date along with the time.
 ---
 
 ## 2. Scheduling Logic and Tradeoffs
