@@ -19,6 +19,7 @@ class Task:
     pet_name: str = ""  # filled in by Pet.add_task
 
     def mark_complete(self) -> None:
+        """Mark this task as done."""
         self.completed = True
 
 
@@ -31,10 +32,12 @@ class Pet:
     tasks: List[Task] = field(default_factory=list)
 
     def add_task(self, task: Task) -> None:
+        """Attach a task to this pet and record the pet's name on it."""
         task.pet_name = self.name
         self.tasks.append(task)
 
     def get_tasks(self) -> List[Task]:
+        """Return all tasks for this pet."""
         return self.tasks
 
 
@@ -46,9 +49,11 @@ class Owner:
         self.pets: List[Pet] = []
 
     def add_pet(self, pet: Pet) -> None:
+        """Add a pet to this owner."""
         self.pets.append(pet)
 
     def get_all_tasks(self) -> List[Task]:
+        """Return every task from every pet in one list."""
         all_tasks: List[Task] = []
         for pet in self.pets:
             all_tasks.extend(pet.get_tasks())
@@ -62,17 +67,21 @@ class Scheduler:
         self.owner = owner
 
     def get_todays_schedule(self) -> List[Task]:
+        """Return all tasks due today across every pet."""
         today = date.today()
         return [t for t in self.owner.get_all_tasks() if t.due_date == today]
 
     # Phase 4 will fill these in.
     def sort_by_time(self, tasks: List[Task]) -> List[Task]:
+        """Return tasks sorted by time (coming in Phase 4)."""
         pass
 
     def filter_tasks(
         self, pet_name: Optional[str] = None, completed: Optional[bool] = None
     ) -> List[Task]:
+        """Return tasks filtered by pet name or completion status (coming in Phase 4)."""
         pass
 
     def detect_conflicts(self) -> List[str]:
+        """Return warnings for tasks scheduled at the same time (coming in Phase 4)."""
         pass
