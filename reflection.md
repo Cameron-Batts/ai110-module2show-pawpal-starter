@@ -48,13 +48,11 @@ I also looked at a shorter version of detect_conflicts that used defaultdict and
 
 **a. What you tested**
 
-- What behaviors did you test?
-- Why were these tests important?
+I tested the main behaviors of the Scheduler and the Task and Pet classes. That includes marking a task complete, adding a task to a pet, sorting tasks by time, creating the next task when a daily task is completed, making sure a one time task does not repeat, and flagging two tasks at the same time as a conflict. I also tested edge cases like a pet with no tasks and tasks that are due on a different day. These matter because the whole app depends on the schedule being in the right order and not missing or repeating tasks by mistake.
 
 **b. Confidence**
 
-- How confident are you that your scheduler works correctly?
-- What edge cases would you test next if you had more time?
+I am about a 4 out of 5 confident that the scheduler works. All 9 tests pass and they cover the main logic. I took off a point because conflict detection only checks for the exact same time and not overlapping durations, and I have not tested the Streamlit app automatically. If I had more time I would test tasks that overlap, invalid time strings like "25:99", two pets with the same name, and a weekly task that is completed more than once.
 
 ---
 
