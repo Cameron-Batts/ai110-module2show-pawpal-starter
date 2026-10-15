@@ -20,8 +20,7 @@ My design changed after I reviewed the skeleton with AI. A Task did not know whi
 
 **a. Constraints and priorities**
 
-- What constraints does your scheduler consider (for example: time, priority, preferences)?
-- How did you decide which constraints mattered most?
+My scheduler looks at the date and time of each task, how often it repeats, and whether it is already done. Each task also has a duration and a priority, and the app shows them, but the scheduler only sorts by date and time right now. I picked time first because a pet owner mostly needs to know what to do next, and two tasks at the same time is the most obvious problem to warn about. Priority is saved on every task so it could be used later.
 
 **b. Tradeoffs**
 
@@ -60,12 +59,12 @@ I am about a 4 out of 5 confident that the scheduler works. All 9 tests pass and
 
 **a. What went well**
 
-- What part of this project are you most satisfied with?
+I am most happy with how the Scheduler works across all pets. It reads everything through Owner.get_all_tasks(), so adding another pet does not break sorting or conflict warnings. I am also glad the tests pass and that the Streamlit app shows a sorted schedule with a warning when two tasks are at the same time.
 
 **b. What you would improve**
 
-- If you had another iteration, what would you improve or redesign?
+If I had another iteration, I would add a button in the Streamlit app to mark a task complete, since right now the recurring task logic only runs in main.py and the tests, not in the app. I would also make conflict detection check overlapping durations, use priority when sorting, and let the user edit or delete tasks.
 
 **c. Key takeaway**
 
-- What is one important thing you learned about designing systems or working with AI on this project?
+My biggest takeaway is that I have to be the one making the design decisions and checking the results. I decided to keep the Scheduler separate from the data classes, to store pet_name on each task, and to keep my own version of detect_conflicts instead of a shorter one. I also learned to check that a file is really saved before committing, because I once committed an empty file. Running the tests and the demo after each step caught small mistakes early.
