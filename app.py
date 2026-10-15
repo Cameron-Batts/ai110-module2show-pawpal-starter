@@ -94,9 +94,11 @@ def task_rows(tasks):
     ]
 
 
-all_tasks = owner.get_all_tasks()
+scheduler = Scheduler(owner)
+
+all_tasks = scheduler.sort_by_time(owner.get_all_tasks())
 if all_tasks:
-    st.write("All tasks:")
+    st.write("All tasks (sorted by date and time):")
     st.table(task_rows(all_tasks))
 
 st.divider()
@@ -104,9 +106,16 @@ st.divider()
 # --- Build the schedule ------------------------------------------------------
 st.subheader("Today's schedule")
 if st.button("Generate schedule"):
-    schedule = Scheduler(owner).get_todays_schedule()
+    schedule = scheduler.sort_by_time(scheduler.get_todays_schedule())
     if schedule:
         st.success(f"{len(schedule)} task(s) scheduled for today.")
         st.table(task_rows(schedule))
     else:
         st.info("Nothing is scheduled for today yet.")
+
+    conflicts = scheduler.detect_conflicts()
+    if conflicts:
+        for warning in conflicts:
+            st.warning(warning)
+    elif schedule:
+        st.success("No scheduling conflicts found.")
