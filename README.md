@@ -79,12 +79,16 @@ Sample test output:
 
 > Fill in once you've implemented scheduling logic.
 
-| Feature | Method(s) | Notes |
-|---------|-----------|-------|
-| Task sorting | | e.g., by priority, duration |
-| Filtering | | e.g., skip tasks if time runs out |
-| Conflict handling | | e.g., overlapping time slots |
-| Recurring tasks | | e.g., daily vs. weekly |
+PawPal+ goes beyond a basic task list with a few algorithms in the `Scheduler` class.
+
+| Feature | Method | Notes |
+|---|---|---|
+| Sort by time | `sort_by_time` | Orders tasks by due date, then by "HH:MM" time, using a lambda key. |
+| Filter tasks | `filter_tasks` | Filters by pet name, completion status, or both. Pet name is not case sensitive. |
+| Recurring tasks | `mark_task_complete` and `next_occurrence` | Completing a daily or weekly task creates a new copy due the next day or 7 days later. One time tasks do not repeat. |
+| Conflict detection | `detect_conflicts` | Returns a warning for any date and time with more than one pending task, across all pets. It does not crash, it just reports. |
+
+Conflict detection only checks for the exact same date and time. It does not check if durations overlap.
 
 ## 📸 Demo Walkthrough
 
