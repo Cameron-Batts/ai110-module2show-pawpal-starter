@@ -4,8 +4,7 @@
 
 **a. Initial design**
 
-- Briefly describe your initial UML design.
-- What classes did you include, and what responsibilities did you assign to each?
+The three main things a user should be able to do are add a pet, schedule a task for that pet (like a walk, a feeding, medication, or a vet visit), and see today's tasks in order. I picked these because they cover the basic loop of the app: set up the pet, plan the care, then check what to do next.
 
 **b. Design changes**
 
