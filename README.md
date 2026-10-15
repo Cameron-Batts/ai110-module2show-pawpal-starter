@@ -62,17 +62,23 @@ Today's Schedule for Jordan
 ## 🧪 Testing PawPal+
 
 ```bash
-# Run the full test suite:
-pytest
+Run the tests with:
 
-# Run with coverage:
-pytest --cov
-```
+    python -m pytest
 
-Sample test output:
+The test suite has 9 tests in `tests/test_pawpal.py`. They cover:
 
-```
-# Paste your pytest output here
+- Task completion changes the task status
+- Adding a task to a pet increases its task count
+- Sorting returns tasks in chronological order
+- Completing a daily task creates a new task for the next day
+- Completing a one time task does not create a new task
+- Conflict detection flags two tasks at the same time (and does not flag different times)
+- Edge cases: a pet with no tasks gives an empty schedule, and tasks due on other days are left out of today's schedule
+
+Latest result: 9 passed.
+
+Confidence level: 4 out of 5 stars. The core logic (sorting, recurrence, conflicts) is tested and passes. I took off one star because conflict detection only checks exact matching times, not overlapping durations, and the Streamlit app itself has not been tested automatically.
 ```
 
 ## 📐 Smarter Scheduling
