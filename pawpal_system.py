@@ -1,4 +1,4 @@
-"""PawPal+ logic layer: Task, Pet, Owner, and Scheduler (skeleton only)."""
+"""PawPal+ logic layer: Task, Pet, Owner, and Scheduler."""
 
 from dataclasses import dataclass, field
 from datetime import date
@@ -16,9 +16,10 @@ class Task:
     duration_minutes: int = 15
     priority: str = "medium"  # "low", "medium", or "high"
     completed: bool = False
+    pet_name: str = ""  # filled in by Pet.add_task
 
     def mark_complete(self) -> None:
-        pass
+        self.completed = True
 
 
 @dataclass
@@ -30,10 +31,11 @@ class Pet:
     tasks: List[Task] = field(default_factory=list)
 
     def add_task(self, task: Task) -> None:
-        pass
+        task.pet_name = self.name
+        self.tasks.append(task)
 
     def get_tasks(self) -> List[Task]:
-        pass
+        return self.tasks
 
 
 class Owner:
@@ -44,10 +46,13 @@ class Owner:
         self.pets: List[Pet] = []
 
     def add_pet(self, pet: Pet) -> None:
-        pass
+        self.pets.append(pet)
 
     def get_all_tasks(self) -> List[Task]:
-        pass
+        all_tasks: List[Task] = []
+        for pet in self.pets:
+            all_tasks.extend(pet.get_tasks())
+        return all_tasks
 
 
 class Scheduler:
@@ -57,8 +62,10 @@ class Scheduler:
         self.owner = owner
 
     def get_todays_schedule(self) -> List[Task]:
-        pass
+        today = date.today()
+        return [t for t in self.owner.get_all_tasks() if t.due_date == today]
 
+    # Phase 4 will fill these in.
     def sort_by_time(self, tasks: List[Task]) -> List[Task]:
         pass
 
