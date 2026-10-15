@@ -44,7 +44,7 @@ pip install -r requirements.txt
 
 ## Implementation Summary
 
-PawPal+ has four classes in pawpal_system.py. Task and Pet are dataclasses. A Task stores one activity (description, time, frequency, due date, duration, priority, and whether it is done). A Pet stores its name, species, and a list of tasks, and add_task() also saves the pet's name on the task. An Owner stores a list of pets, and get_all_tasks() collects every pet's tasks into one list. The Scheduler takes an Owner and reads from get_all_tasks(), so it works across all pets. Right now it can return the tasks due today. Sorting, filtering, and conflict checks are planned for Phase 4. main.py is a demo script that builds an owner with two pets and prints today's schedule, and tests/test_pawpal.py has the first two pytest tests.
+PawPal+ has four classes in pawpal_system.py. Task and Pet are dataclasses. A Task stores one activity (description, time, frequency, due date, duration, priority, and whether it is done). A Pet stores its name, species, and a list of tasks, and add_task() also saves the pet's name on the task. An Owner stores a list of pets, and get_all_tasks() collects every pet's tasks into one list. The Scheduler takes an Owner and reads from get_all_tasks(), so it works across all pets. The Scheduler can return today's tasks, sort them by time, filter them by pet or completion status, create the next task when a daily or weekly task is completed, and warn about tasks scheduled at the same time. main.py is a demo script that shows all of this with two pets, and tests/test_pawpal.py has 9 pytest tests.
 
 ## 🖥️ Sample Output
 
@@ -61,10 +61,11 @@ Today's Schedule for Jordan
 
 ## 🧪 Testing PawPal+
 
-```bash
 Run the tests with:
 
-    python -m pytest
+```bash
+python -m pytest
+```
 
 The test suite has 9 tests in `tests/test_pawpal.py`. They cover:
 
@@ -79,11 +80,9 @@ The test suite has 9 tests in `tests/test_pawpal.py`. They cover:
 Latest result: 9 passed.
 
 Confidence level: 4 out of 5 stars. The core logic (sorting, recurrence, conflicts) is tested and passes. I took off one star because conflict detection only checks exact matching times, not overlapping durations, and the Streamlit app itself has not been tested automatically.
-```
 
 ## 📐 Smarter Scheduling
 
-> Fill in once you've implemented scheduling logic.
 
 PawPal+ goes beyond a basic task list with a few algorithms in the `Scheduler` class.
 
